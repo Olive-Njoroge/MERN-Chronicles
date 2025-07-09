@@ -1,0 +1,3 @@
+const Message = require('../models/Message');
+const User = require('../models/User');
+const Room = require('../models/Room');
