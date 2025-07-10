@@ -30,6 +30,12 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
     console.log(`User Connected: ${socket.id}`);  // Log when a new client connects
 
+    // Listen for 'message' events sent by the client
+    socket.on('message', (msg) => {
+        // Broadcast the message to all connected clients
+        io.emit('message', msg);
+    });
+
     // Listen for the client disconnecting
     socket.on('disconnect', () => {
         console.log(`User disconnected: ${socket.id}`);  // Log when a client disconnects
